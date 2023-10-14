@@ -3,7 +3,6 @@ package main
 import . "fmt"
 import "math"
 
-// area and rectangle perimeter
 func main() {
 	//rectangle()
 	//circle()
