@@ -19,28 +19,25 @@ func main() {
 	//retta()
 	//tabellina()
 	//sumInterval()
-	//perationN()
-
-	//mean() // !
+	//operationN()
+	//mean() // TODO check scanf input stop condition
 	//guess()
 	//fizz2Buzz()
 	//divisors()
 	//operations()
-	//crescente() // TODO check scanf input stop condition
+	//crescente() // TODO check scanf 
 	//fibonacci()
 }
 
 func fibonacci() {
 	var a, b int = 1, 1
-	var n int
 	Println("enter number: ")
 	Scan(&n)
 	Print(a, " ")
-	for i := 1; i < n-1; i++ {
+	for i := 1; i < n; i++ {
 		Print(b, " ")
 		a, b = b, b+a
 	}
-	Println(b)
 }
 
 func crescente() {
