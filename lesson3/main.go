@@ -26,11 +26,12 @@ func main() {
 	//divisors()
 	//operations()
 	//crescente() // TODO check scanf 
-	//fibonacci()
+	fibonacci()
 }
 
 func fibonacci() {
 	var a, b int = 1, 1
+	var n int
 	Println("enter number: ")
 	Scan(&n)
 	Print(a, " ")
