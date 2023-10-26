@@ -12,7 +12,7 @@ func main() {
 	//countString()
 	//swapCase()
 	//palindroma()
-	triangle()
+	//triangle()
 }
 
 func triangle() {
@@ -46,12 +46,17 @@ func top(n int) {
 	}
 }
 func bottom(n int) {
-	for i := 0; i < n; i++ {
-		if i == n-1 {
+	var space string
+	for i := 0; i < n-1; i++ {
+		space += " "
+	}
+	for i := n; i > 0; i-- {
+		Print(space)
+		if i == 1 {
 			stampa(n)
 		} else {
-			for j := 0; j < n; j++ {
-				if j == n-1 || j == i {
+			for j := n; j > 0; j-- {
+				if j == n || j == i {
 					Print("*")
 				} else {
 					Print(" ")
