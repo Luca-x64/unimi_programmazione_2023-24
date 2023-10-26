@@ -1,7 +1,9 @@
 package main
 
-import . "fmt"
-import "strings"
+import (
+	. "fmt"
+	"strings"
+)
 
 func main() {
 	//quadrato()
@@ -9,35 +11,77 @@ func main() {
 	//quadratoTriploAlterno()
 	//countString()
 	//swapCase()
-	palindroma()
+	//palindroma()
+	triangle()
+}
+
+func triangle() {
+	var n int
+	Print("n:")
+	Scan(&n)
+	top(n)
+	bottom(n)
+}
+
+func stampa(n int) {
+	for i := 0; i < n; i++ {
+		Print("*")
+	}
+}
+
+func top(n int) {
+	for i := 0; i < n; i++ {
+		if i == 0 {
+			stampa(n)
+		} else {
+			for j := 0; j < n; j++ {
+				if j == n-1 || j == i {
+					Print("*")
+				} else {
+					Print(" ")
+				}
+			}
+		}
+		Println()
+	}
+}
+func bottom(n int) {
+	for i := 0; i < n; i++ {
+		if i == n-1 {
+			stampa(n)
+		} else {
+			for j := 0; j < n; j++ {
+				if j == n-1 || j == i {
+					Print("*")
+				} else {
+					Print(" ")
+				}
+			}
+		}
+		Println()
+	}
 }
 
 func palindroma() {
 	var s string
 	var palindroma bool = true
 	Scan(&s)
-	
-	// for i,_ := range s{
-	// 	if (i >= len(s)/2){
-	// 		break
-	// 	}
-	// 	if strings.Compare(string(s[i]), string(s[len(s)-1-i])) != 0{
-	// 		palindroma=false
-	// 	}
-	// }
-	//Println("Palindroma? ",palindroma)
-	
-	Println("Palindroma? ",palindroma)
+	for i := 0; i < len([]rune(s))/2; i++ {
+		if []rune(s)[i] != []rune(s)[len([]rune(s))-1-i] {
+			palindroma = false
+		}
+	}
+	Println("Palindroma? ", palindroma)
 }
 
 func swapCase() {
 	var s string
 	Scan(&s)
-	Println(strings.ToUpper(s),"\n",strings.ToLower(s))
+	Println(strings.ToUpper(s), "\n", strings.ToLower(s))
 }
 
 func countString() {
-	var s,sTemp string = "",""
+	var s, sTemp string = "", ""
 	var temp rune
 	var mai, min, con, voc int
 	Scan(&s)
@@ -58,7 +102,7 @@ func countString() {
 			}
 		}
 	}
-	Print("maiuscole: ",mai,"\nmin:",min,"\nconsonanti:",con,"\nvocali:",voc,"\n")
+	Print("maiuscole: ", mai, "\nmin:", min, "\nconsonanti:", con, "\nvocali:", voc, "\n")
 }
 
 func quadratoTriploAlterno() {
