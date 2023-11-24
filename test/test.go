@@ -6,8 +6,51 @@ import . "math"
 func main()  {
 	//cast32()
 	//rombo()
-
+	//test4()
+	test5()
 	
+	
+}
+
+const Dimensione = 10
+
+func test5() {var a []int
+
+	for i := 0; i < Dimensione; i++ {
+		a = append([]int{i + 1}, a...)
+	}
+
+	Println(a)
+
+	b := make([]int, Dimensione)
+
+	copy(b, a[Dimensione/2:])
+
+	Println(b)
+}
+
+func stampa(sl []int) {
+	for _, v := range sl {
+		Print(v, " ")
+	}
+	Println()
+}
+func modifica(sl []int) {
+	for i := range sl {
+		sl[i] *= 2
+	}
+}
+
+func eliminaUltimoElemento(sl []int) {
+	sl = sl[:len(sl)-1]
+}
+
+
+
+
+
+
+func test4() {
 	var n int
 
 
@@ -25,7 +68,7 @@ func main()  {
 		}
 
 	}
-  }
+}
 
 func rombo() {
 	var n int
