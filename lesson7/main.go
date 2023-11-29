@@ -2,6 +2,7 @@ package main
 
 import (
 	. "fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -11,13 +12,99 @@ func main() {
 	//questions()
 	//first()
 	//Inverso()
-	checkSequence()
+	//checkSequence()
+	//filterMultiply()
+	//minMaxMean()
+	fattoriale()
+}
+
+func fattoriale() {
+	n,_ := strconv.Atoi(os.Args[1])
+	Println("Fattoriale",n,":",fact(n))
+}
+
+func fact(n int) (f []int){
+	if n > 0 {
+		f = append(f,1)
+	}
+	for i := 2; i <= n; i++ {
+		f= append(f,f[len(f)-1]*i)
+	}
+	return f
+}
+
+func minMaxMean() {
+	numeri := LeggiNumeri()
+	if len(numeri) == 0{
+		Println("Enter args")
+		return
+	}
+	Printf("Minimo: %d\nMassimo: %d\n",min(numeri),max(numeri))
+	Printf(Sprintf("Media: %%.%df\n",2),mean(numeri))
+}
+
+func min(sl []int) int{
+	var min int = math.MaxInt32
+	for _,v := range sl{
+		if v < min{
+			min = v
+		}
+	}
+	return min
+}
+func max(sl []int) int{
+	var max int = math.MinInt32
+	for _,v := range sl{
+		if v > max{
+			max = v
+		}
+	}
+	return max
+}
+func mean(sl []int) float64{
+	var sum int = 0
+	for _,v := range sl{
+		sum +=v
+	}
+	return (float64(sum)/float64(len(sl)))
+}
+
+func LeggiNumeri() (numeri []int){
+	args := os.Args[1:]
+	if len(args) == 0 {
+		return	
+	}
+
+	for _,v := range args {
+		n, err := strconv.Atoi(v)
+		if err == nil {
+			numeri = append(numeri,n)
+		}
+	}
+	return
+}
+
+func filterMultiply() {
+	args := os.Args[1:]
+	if len(args) == 0 {
+		return	
+	}
+	var product int = 1
+	for _,v := range args {
+		n, err := strconv.Atoi(v)
+		if err == nil {
+			product*=n
+		}
+	}
+	Printf("Product: %d\n",product)
 }
 
 func checkSequence() {
 	args := os.Args[1:]
-	var flag bool = check(args)
-	Print(flag)
+	if len(args) == 0 {
+		args = []string{"mamma","mia!"}
+	}
+	check(args)
 }
 
 func check(s []string) bool {
@@ -25,21 +112,25 @@ func check(s []string) bool {
 	for i := 0; i < len(s); i++ {
 		n,err := strconv.Atoi(s[i])
 		if err != nil{ // check non number
+			Printf("valore in posizione %d non valido",i)
 			return false
 		}else{
 			save = append(save,n)
-			pos := len(save) 
+			pos := len(save) -1
 			if pos % 2 != 0{
 				if save[pos] >= save[pos-1]{ // second check	
+					Printf("valore in posizione %d non valido",i)
 					return false
 				}
 			}else {
 				if pos > 1 && save[pos] <= save[pos-1]{ // third check
+					Printf("valore in posizione %d non valido",i)
 					return false
 				}
 			}
 		}
 	}
+	Println("Sequenza valida")
 	return true
 }
 
