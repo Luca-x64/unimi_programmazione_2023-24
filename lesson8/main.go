@@ -3,11 +3,12 @@ package main
 import (
 	. "fmt"
 	_ "math"
+	"math/rand"
 	"os"
+	"sort"
 	"strconv"
 	_ "strings"
 	"time"
-	"math/rand"
 )
 
 func main(){
@@ -23,18 +24,25 @@ func Prime() { //TODO
 	n,err := strconv.Atoi(os.Args[1])
 	_ = n
 	sn := os.Args[1]
+	var nums []int
+	if isprime(n){
+		nums = append(nums,n)
+	}
 	if err == nil{ 
-		// for s := 0; s < len(sn)-1; s++ {
-		// 	for e := len(sn); e > len(sn)-3; e-- {
-		// 		Println(sn[s:e])
-		// 	}
-		// }
-		for s := 0; s < len(sn)-1; s++ {
-			for e := 0; e < 3; e++ {
-				Println(sn[s:len(sn)-e])
-				Println(sn[len(sn)-e:])
+		
+		for i := 0; i <= 3; i++ { // 1
+			for j := len(sn); j > i-1; j--{
+				a,_ := strconv.Atoi(sn[:j-i]+sn[j:])
+				if isprime(a){ // filter prime
+					nums = append(nums,a)
+				}
 			}
 		}
+	sort.Ints(nums)
+	for _,v:=range nums{
+		Println(v)
+	}
+	
 	}else{
 		Print("args error")
 	}
