@@ -25,7 +25,7 @@ func main() {
 	//fizz2Buzz()
 	//divisors()
 	//operations()
-	//crescente() // TODO check scanf 
+	//crescente() // TODO check scanf
 	fibonacci()
 }
 
@@ -44,7 +44,6 @@ func fibonacci() {
 func crescente() {
 	Println("Inserisci una sequenza di numeri: ")
 	for false { // debug
-
 	}
 }
 
@@ -63,28 +62,24 @@ func operations() {
 		potenzaFor *= a
 	}
 	Println("Potenza for: ", potenzaFor, "\nPotenza math: ", math.Pow(float64(a), float64(b)))
-
 }
 
 func divisors() {
 	var n int
 	Print("Enter number: ")
 	Scan(&n)
-
 	Printf("Divisori di %d: ", n)
 	for i := 1; i < n; i++ {
 		if n%i == 0 {
 			Print(i, " ")
 		}
 	}
-
 }
 
 func fizz2Buzz() {
 	var n int
 	Print("Enter number: ")
 	Scan(&n)
-
 	for i := 1; i <= n; i++ {
 		if i%3 == 0 && i%5 == 0 {
 			Print("FizzBuzz ")
@@ -114,7 +109,6 @@ func guess() {
 		cnt++
 	}
 	Printf("You guess in %d attempts\n", cnt)
-
 }
 
 func mean() {
@@ -137,7 +131,6 @@ func operationN() {
 	var n int
 	Print("Enter number: ")
 	Scan(&n)
-
 	max, min, gt, eq, ls, sum := 0, 0, 0, 0, 0, 0
 	for i := 0; i < n; i++ {
 		var t int
@@ -244,7 +237,6 @@ func angoli() {
 	} else {
 		Println("I due angoli non appartengono ad un triangolo")
 	}
-
 }
 
 func division() {

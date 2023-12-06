@@ -77,7 +77,6 @@ func analisiLettere() {
 	Scan(&s)
 	for _,char := range s{
 		if unicode.IsLetter(char){
-
 			if unicode.IsUpper(char){
 				if èVocale(unicode.ToLower(char)){
 					vm++
@@ -91,8 +90,6 @@ func analisiLettere() {
 					c++
 				}
 			}
-
-
 		}
 	}
 	print(vm,cm,v,c)
@@ -116,7 +113,6 @@ func stringa_alternata() {
 	Println(StringheAlternate(s,l))
 }
 func StringheAlternate(s1, s2 string) (risultato string){
-
 	for i := 0; i < len(s1); i++ {
 	risultato+=string(s1[i])+string(s2[i])		
 	}
@@ -146,9 +142,6 @@ func ternaPitagorica() {
 	Scan(&n)
 	if n <=0 {Println("La soglia non è positiva");return}
 	TernePitagoriche(n)
-		
-		
-	
 }
 
 func ETernaPitagoriga(a int, b int, c int) bool{
@@ -164,8 +157,7 @@ func TernePitagoriche(soglia int){
 				}
 			}
 		}
-}
-
+	}
 }
 
 func primiGemelli() {
@@ -174,8 +166,8 @@ func primiGemelli() {
 	Scan(&n)
 	if n <=0 {Println("La soglia non è positiva");return}
 	NumeriPrimiGemelli(n)
-
 }
+
 func NumeriPrimiGemelli(limite int){
 	p,q :=1,3
 	for i := 3; i < limite; i+=2 {
@@ -191,13 +183,11 @@ func NumeriPrimiGemelli(limite int){
 }
 
 func prime() {
-
 	var n int
 	Print("soglia:")
 	Scan(&n)
 	if n <=0 {Println("La soglia non è positiva");return}
 	NumeriPrimi(n)
-
 }
 
 func EPrimo(n int) bool{
@@ -222,9 +212,9 @@ func Scacchiera() {
 	var n int
 	Print("n:")
 	Scan(&n)
-	StampaScacchiera(n)
-	
+	StampaScacchiera(n)	
 }
+
 func StampaScacchiera(size int){
 	if size <= 0 {return}
 	var flag bool = true
@@ -233,13 +223,9 @@ func StampaScacchiera(size int){
 			StampaRigaInizioAsterisco(size)
 		}else{
 			StampaRigaInizioPiù(size)
-		}
-		
+		}		
 		flag = !flag
-		
 	}
-
-
 }
 
 func StampaRigaInizioAsterisco(size int) {
@@ -260,8 +246,6 @@ func tabelline() {
 		Print("num: ")
 		Scan(&num)
 	}
-
-	
 }
 
 func Tabellina(n int) bool{

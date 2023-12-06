@@ -15,7 +15,7 @@ func main() {
 	//checkSequence()
 	//filterMultiply()
 	//minMaxMean()
-	fattoriale()
+	//fattoriale()
 }
 
 func fattoriale() {
@@ -52,6 +52,7 @@ func min(sl []int) int{
 	}
 	return min
 }
+
 func max(sl []int) int{
 	var max int = math.MinInt32
 	for _,v := range sl{
@@ -61,6 +62,7 @@ func max(sl []int) int{
 	}
 	return max
 }
+
 func mean(sl []int) float64{
 	var sum int = 0
 	for _,v := range sl{
@@ -147,12 +149,6 @@ func Inverso() {
 	for i := len(numeri)-1; i >= 0; i-- {
 		Print(numeri[i], " ",)
 	}
-	
-
-
-
-
-	
 }
 
 func first() {
@@ -174,6 +170,7 @@ func Occorrenze(s string) (count [26]int) {
 	}
 	return
 }
+
 func questions() {
 	// 'abc'
 	// 'helloworld'
