@@ -3,6 +3,7 @@ package main
 import (
 	. "fmt"
 	"math/rand"
+	"os"
 	"strconv"
 	"strings"
 	_ "testing"
@@ -13,28 +14,111 @@ func main() {
 	//exampleOddOrEven()
 	//carteDaGioco()
 	//subStringPalindrome()
-	balancedBrackets()
+	//balancedBrackets()
+	//SubstringGrowing()
+	//triangleTartaglia()
 }
 
-func balancedBrackets() {
-	var s string
-	Print("Enter s:")
-	Scan(&s)
-	if isBalanced(s){
-		Println("bilanciata")
+func triangleTartaglia(){
+	n,e := strconv.Atoi(os.Args[1])
+	if e == nil{
+		StampaTriangolo(generaTriangolo(n))
+	}
+}
+func generaTriangolo(n int) (t [][]int){
+	for i := 0; i < n+1; i++ {
+		line := []int{}
+		for j := 0; j <=i; j++ {
+			if j == 0 || j == i{
+				line = append(line,1)
+			}else{
+				line = append(line,t[i-1][j-1]+t[i-1][j])
+			}
+		}
+		t = append(t,line)
+	}
+	return 
+}
+func StampaTriangolo (t [][]int){
+	for i := 0; i < len(t); i++ {
+		for j := 0; j <= i; j++ {
+			Print(t[i][j]," ")
+		}
+		Println()
+	}
+}
+
+func SubstringGrowing() {
+	s := os.Args[1]
+	_, e := strconv.Atoi(s)
+	if e != nil {
+		Print([]string{})
 	}else{
+		sequence := sottoStringhe(s)
+		Println(sequence)
+	}
+	
+	
+}
+func sottoStringhe(s string) []string{
+	sequence := []string{}
+	for i := 0; i < len(s); i++ {
+		for j := 2; j < len(s)-i+1; j++ {
+			t := s[i : i+j]
+			if len(t) >= 2 && grow(t) {
+				sequence = append(sequence,t)
+			}
+		}
+	}
+	return sequence
+}
+func grow(t string) bool {
+	for i := 0; i < len(t)-1; i++ {
+		a, _ := strconv.Atoi(string(t[i]))
+		b, _ := strconv.Atoi(string(t[i+1]))
+		if a >= b {
+			return false
+		}
+	}
+	return true
+
+}
+func balancedBrackets() {
+	var s string = os.Args[1]
+	ln := len(s)
+	if strings.Index(s, "(") == -1 && strings.Index(s, ")") == -1 {
+		Println("L'input fornito non aveva esclusivamente parentesi tonde.")
+		return
+	}
+	if isBalanced(s) {
+		Println("bilanciata")
+	} else {
 		Println("non bilanciata")
 	}
-	//parte 2
+	Print("---\nSottosequenze bilanciate:\n")
 
+	//parte 2
+	cnt := 1
+	for i := 0; i < ln; i++ {
+		for j := 2; j < ln-i+1; j++ {
+			sub := s[i : i+j]
+			if isBalanced(sub) {
+				Println(cnt, sub)
+				cnt += 1
+			}
+		}
+	}
+	if cnt == 1 {
+		Println("Nessuna")
+	}
 
 }
-func isBalanced(s string) bool{
-	index := strings.Index(s,"()")
+func isBalanced(s string) bool {
+	index := strings.Index(s, "()")
 	copy := s
-	for index != -1{
-		copy =strings.ReplaceAll(copy,"()","")
-		index = strings.Index(copy,"()")
+	for index != -1 {
+		copy = strings.ReplaceAll(copy, "()", "")
+		index = strings.Index(copy, "()")
 	}
 	return len(copy) == 0
 }
@@ -46,17 +130,17 @@ func subStringPalindrome() {
 	ln := len(s)
 	for i := 0; i < ln; i++ {
 		for j := 2; j < ln-i+1; j++ {
-			sub := s[i:i+j]
-			if isPalindrome(sub){
+			sub := s[i : i+j]
+			if isPalindrome(sub) {
 				Println(sub)
 			}
 		}
 	}
 
 }
-func isPalindrome(s string)  bool{
+func isPalindrome(s string) bool {
 	for i := 0; i < len(s)/2; i++ {
-		if s[i] != s[len(s)-1-i]{
+		if s[i] != s[len(s)-1-i] {
 			return false
 		}
 	}
@@ -115,7 +199,6 @@ func creaMazzo() (m Mazzo) {
 	simboli := [10]string{"asso", "2", "3", "4", "5", "6", "7", "fante", "donna", "re"}
 	for seme := range semi {
 		for simbolo := range simboli {
-			// pos,_ := strconv.Atoi(strconv.Itoa(seme)+strconv.Itoa(simbolo))
 			m.carte = append(m.carte, creaCarta(semi[seme], simboli[simbolo]))
 			m.nCarte = m.nCarte + 1
 		}
