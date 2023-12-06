@@ -33,7 +33,6 @@ func convertFromBaseXTo10(n string, b int) (sum int,r bool){
 		t := strings.Index(hex,string(n[i]))
 		sum += t * int(math.Pow(float64(b),float64(len(n)-i-1)))
 	}
-	
 	return sum,r	
 }
 
@@ -42,7 +41,6 @@ func BaseXToHex() {
 	var b int
 	Print("Enter num and base (letters only upper case):")
 	Scan(&n,&b)
-
 	a,_ := convertFromBaseXTo10(n,b)
 	Print(a)
 }
@@ -76,7 +74,6 @@ func minTermini() {
 		f := NuovaFrazione(n,d)
 		StampaFraz(Riduci(f))
 	}
-	
 }
 
 func Riduci(f *frazione) *frazione {
@@ -104,7 +101,6 @@ func StampaFraz(f *frazione) {
 }
 
 func NuovaFrazione(num,denom int) *frazione {
-	
 	var f frazione = frazione{num,denom}
 	return &f
 }
@@ -121,7 +117,6 @@ func NumeroNascosto(testo string) (int, error){
 		return 0,nil
 	}
 	return strconv.Atoi(num)
-	
 }
 
 
@@ -138,7 +133,6 @@ func hiddenNumber() {
 }
 
 func lastSurname() {
-
 	var input,last string = "",""
 	Println("Enter s:")
 	Scan(&input)
@@ -217,7 +211,6 @@ func first() {
 		for i := 1; i <= a; i++ {
 			Println(strings.Repeat("*", i))
 		}
-
 	} else {
 		Println("error")
 	}

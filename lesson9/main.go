@@ -25,6 +25,7 @@ func triangleTartaglia(){
 		StampaTriangolo(generaTriangolo(n))
 	}
 }
+
 func generaTriangolo(n int) (t [][]int){
 	for i := 0; i < n+1; i++ {
 		line := []int{}
@@ -39,6 +40,7 @@ func generaTriangolo(n int) (t [][]int){
 	}
 	return 
 }
+
 func StampaTriangolo (t [][]int){
 	for i := 0; i < len(t); i++ {
 		for j := 0; j <= i; j++ {
@@ -57,8 +59,6 @@ func SubstringGrowing() {
 		sequence := sottoStringhe(s)
 		Println(sequence)
 	}
-	
-	
 }
 func sottoStringhe(s string) []string{
 	sequence := []string{}
@@ -72,6 +72,7 @@ func sottoStringhe(s string) []string{
 	}
 	return sequence
 }
+
 func grow(t string) bool {
 	for i := 0; i < len(t)-1; i++ {
 		a, _ := strconv.Atoi(string(t[i]))
@@ -81,8 +82,8 @@ func grow(t string) bool {
 		}
 	}
 	return true
-
 }
+
 func balancedBrackets() {
 	var s string = os.Args[1]
 	ln := len(s)
@@ -111,7 +112,6 @@ func balancedBrackets() {
 	if cnt == 1 {
 		Println("Nessuna")
 	}
-
 }
 func isBalanced(s string) bool {
 	index := strings.Index(s, "()")
@@ -136,8 +136,8 @@ func subStringPalindrome() {
 			}
 		}
 	}
-
 }
+
 func isPalindrome(s string) bool {
 	for i := 0; i < len(s)/2; i++ {
 		if s[i] != s[len(s)-1-i] {
@@ -164,7 +164,6 @@ func carteDaGioco() {
 	Println()
 	m := mazzo
 	for i := 0; i < 41; i++ {
-
 		c, mv, err := Preleva(m)
 		if err != nil {
 			Println(err)
@@ -172,9 +171,7 @@ func carteDaGioco() {
 			Println("Prelevata:", c, "totale carte: ", m.nCarte)
 			m = mv
 		}
-
 	}
-
 	for i := 0; i < 41; i++ {
 		rnd := rand.Intn(40)
 		var c Carta = mazzo.carte[rnd]
@@ -185,7 +182,6 @@ func carteDaGioco() {
 			Println("Inserita", c, "totale carte:", m.nCarte)
 			m = mv
 		}
-
 	}
 }
 func creaCarta(seme, simbolo string) (c Carta) {
@@ -203,17 +199,17 @@ func creaMazzo() (m Mazzo) {
 			m.nCarte = m.nCarte + 1
 		}
 	}
-
 	return
 }
+
 func shuffle(m Mazzo) Mazzo {
 	for i := 0; i < m.nCarte; i++ {
 		rnd := rand.Intn(i + 1)
 		m.carte[i], m.carte[rnd] = m.carte[rnd], m.carte[i]
 	}
 	return m
-
 }
+
 func Preleva(m Mazzo) (c Carta, mm Mazzo, e error) {
 	if m.nCarte > 0 {
 		c = m.carte[0]
@@ -225,6 +221,7 @@ func Preleva(m Mazzo) (c Carta, mm Mazzo, e error) {
 	}
 	return
 }
+
 func Riponi(m Mazzo, c Carta) (new Mazzo, e error) {
 	new = m
 	if m.nCarte < 40 {
@@ -247,6 +244,7 @@ func exampleOddOrEven() {
 func oddOrEven(n int) bool {
 	return n%2 == 0
 }
+
 func test() {
 	var input string
 	Scan(&input)
@@ -266,7 +264,6 @@ func test() {
 				Println("il valore inserito è un numero intero positivo non primo")
 			}
 		}
-
 	} else {
 		Println("il valore inserito non è un numero")
 	}
