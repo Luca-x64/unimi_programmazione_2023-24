@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"cmp"
 	. "fmt"
 	"os"
 	"slices"
@@ -11,13 +12,57 @@ import (
 )
 
 func main() {
-	//ripetizioni()
-	//ppm()
-	subSequence()
+	// ripetizioni()
+	// ppm()
+	// subSequence()
+	pitagorica()
+}
+
+func pitagorica(){
+	n,_ := strconv.Atoi(os.Args[1])
+	tavola := CreaTavolaPitagorica(n)
+	StampaTavolaPitagorica(tavola)
+}
+
+func CreaTavolaPitagorica(n int) [][]int{
+	var tavola [][]int
+	for i := 1; i <= n; i++ {
+		var line []int
+		for j := 1; j <= n; j++ {
+			line = append(line,i*j)
+		}
+		tavola = append(tavola,line)
+	}
+	return tavola
+}
+
+func StampaTavolaPitagorica(s [][]int){
+	for i := 0; i < len(s); i++ {
+		for j := 0; j < len(s); j++ {
+			Printf("%4d ",s[i][j])
+		}
+		Println()
+	}
+
 }
 
 func subSequence(){
-
+	seq := os.Args[1:]
+	var subsequences []string 
+	for s := 0;s  < len(seq)/2; s++ {
+		for e := s+1; e < len(seq); e++ {
+			if seq[s] == seq[e]{
+				subsequences = append(subsequences, strings.Join((seq[s:e+1])," ") )
+				
+			}
+		}
+	}
+	slices.SortFunc(subsequences,func(a,b string) int {
+		return cmp.Compare(len(a),len(b))
+	})
+	for i := 0; i < len(subsequences); i++ {
+		Println(subsequences[i])
+	}
 }
 
 type RGB struct {
@@ -25,10 +70,16 @@ type RGB struct {
 }
 type Img struct {
 	w, h  int
-	pixel []RGB
+	pixels []RGB
 }
 
 func ppm() {
+	img := LeggiFilePPM()
+	Printf("Immagine letta: %v",img)
+	
+}
+
+func LeggiFilePPM() (img Img){
 	file, err := os.Open(os.Args[1])
 	if err == nil {
 		b := make([]byte, 4096)
@@ -45,24 +96,22 @@ func ppm() {
 			sizes := strings.Split(lines[1],"")
 			width,_ := strconv.Atoi(sizes[0])
 			heigth,_ := strconv.Atoi(sizes[1])
-			
-			var img Img = Img{width,heigth,[]RGB{}}
-			_ = img
+			img.w=width
+			img.h = heigth
 			for i := 3; i < len(lines)-1; i++ {
 				colors := strings.Split(lines[i]," ")
-				Println(colors)
+				// Println(colors)
 				r,_ := strconv.Atoi(colors[0])
 				g,_ := strconv.Atoi(colors[1])
 				b,_ := strconv.Atoi(colors[2])
 				pixel := RGB{uint(r),uint(g),uint(b)}
-				img.pixel = append(img.pixel,pixel)
+				img.pixels = append(img.pixels,pixel)
 			}
-			Println(img)
-
 		}
-	
+		return
 
 }
+
 func ripetizioni() {
 	scan := bufio.NewScanner(os.Stdin)
 	mappa := map[string]int{}
